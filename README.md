@@ -44,7 +44,7 @@ Servidor Linux en contenedor LXC dentro de Proxmox y cliente Windows usando Powe
 apt update
 #Instalar el servidor SSH.
 apt install openssh-server
-Verificar el estado del servicio.ss -tlnp | grep ssh
+#Verificar el estado del servicio.
 systemctl status ssh
 #Si no está activo:
 systemctl start ssh
