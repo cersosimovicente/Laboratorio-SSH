@@ -39,7 +39,7 @@ Servidor Linux en contenedor LXC dentro de Proxmox y cliente Windows usando Powe
 
 # Parte 1 — Preparación del servidor SSH
 ```bash
-#Ingresar al contenedor desde el host de Proxmox.
+#Ingresar al contenedor desde el host de Proxmox.ss -tlnp | grep ssh
 #Actualizar el sistema.
 apt update
 #Instalar el servidor SSH.
@@ -52,5 +52,34 @@ systemctl enable ssh
 #Verificar puerto de escucha.
 ss -tlnp | grep ssh
 ```
+# Parte 2 — Crear usuario para acceso remoto
+```bash
+#Crear un usuario para el laboratorio.
+adduser alumno (aca va tu nombre)
+#Opcional: permitir privilegios sudo.
+usermod -aG sudo alumno
+```
+# ETAPA 1 — Conexión SSH con usuario y contraseña
+Desde la computadora del alumno (fisica o virtual) abrir PowerShell.
+Conectarse al servidor.
+```bash
+ssh alumno@192.168.128.x
+```
+La primera vez aparecerá el mensaje de autenticidad del host.
 
-        
+Aceptar con:
+
+yes
+
+Luego ingresar la contraseña del usuario.
+
+Si la conexión es exitosa aparecerá algo similar a:
+
+`alumno@servidor:~$`
+
+Salir de la conexión.
+
+exit
+
+# Ejercicio práctico
+
