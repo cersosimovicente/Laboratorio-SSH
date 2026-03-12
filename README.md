@@ -69,7 +69,7 @@ La primera vez aparecerá el mensaje de autenticidad del host.
 
 Aceptar con:
 
-yes
+`yes`
 
 Luego ingresar la contraseña del usuario.
 
@@ -79,7 +79,22 @@ Si la conexión es exitosa aparecerá algo similar a:
 
 Salir de la conexión.
 
-exit
+`exit`
 
 # Ejercicio práctico
+Una vez conectados ejecutar los siguientes comandos.
+```bash
+whoami
+hostname
+ip a
+```
+Crear un archivo de prueba.
+
+`touch prueba.txt`
+
+Cerrar la sesión.
+
+`exit`
+
+
 
