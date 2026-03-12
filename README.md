@@ -148,13 +148,48 @@ chmod 600 /home/alumno/.ssh/authorized_keys
 ```
 # Parte 5 — Probar acceso sin contraseña
 Desde Windows ejecutar nuevamente:
-```ps
+```powershell
 ssh alumno@192.168.128.x
 ```
 Resultado esperado:
 
 ✔ conexión directa
+
 ✔ no solicita contraseña
+
+# Parte 6 — Deshabilitar autenticación por contraseña
+Editar configuración del servidor. ***antes realiza una copia de seguridad del archivo***
+```bash
+nano /etc/ssh/sshd_config
+#Configurar:
+PasswordAuthentication no
+PubkeyAuthentication yes
+PermitRootLogin no
+#Reiniciar el servicio.
+systemctl restart ssh
+```
+# Parte 7 — Transferencia de archivos con SCP
+```powershell
+#Copiar archivo al servidor.
+scp archivo.txt alumno@192.168.128.x:/home/alumno
+#Copiar archivo desde el servidor.
+scp alumno@192.168.128.x:/home/alumno/prueba.txt .
+```
+# Entregable
+Se debera entregar la salidas en formato Markdown
+- conexión SSH inicial
+- generación de claves
+- archivo authorized_keys
+- conexión sin contraseña
+- transferencia de archivos con SCP
+
+## Preguntas de reflexión
+1. ¿Qué ventajas tiene usar claves SSH en lugar de contraseñas?
+2. ¿Por qué SSH exige permisos estrictos en el directorio .ssh?
+3. ¿Qué ocurre si la clave privada es comprometida?
+4. ¿Qué diferencia existe entre SSH y Telnet?
+
+
 
 
 
