@@ -96,5 +96,67 @@ Cerrar la sesión.
 
 `exit`
 
+# ETAPA 2 — Autenticación mediante claves SSH
+SSH permite autenticarse mediante criptografía de clave pública.
+Funcionamiento:
+- la `clave pública` se guarda en el servidor
+- la `clave privada` se guarda en el cliente
+
+Esto permite conectarse sin contraseña.
+
+# Parte 3 — Generar claves SSH en Windows
+```bash
+ssh-keygen
+```
+Aceptar la ruta por defecto.
+
+
+`C:\Users\usuario\.ssh\id_rsa` 
+
+
+Se generarán dos archivos:
+```bash
+id_rsa
+id_rsa.pub
+```
+# Parte 4 — Copiar la clave al servidor
+Mostrar la clave pública.
+```powershell
+type $env:USERPROFILE\.ssh\id_rsa.pub
+```
+Copiar el contenido.
+
+## En el servidor Linux
+Crear el directorio `.ssh`.
+```bash
+mkdir /home/alumno/.ssh
+```
+Crear el archivo de claves autorizadas.
+```bash
+nano /home/alumno/.ssh/authorized_keys
+```
+Pegar la clave pública dentro del archivo.
+
+## Configurar permisos
+
+SSH requiere permisos estrictos.
+
+```bash
+chown -R alumno:alumno /home/alumno/.ssh
+chmod 700 /home/alumno/.ssh
+chmod 600 /home/alumno/.ssh/authorized_keys
+```
+# Parte 5 — Probar acceso sin contraseña
+Desde Windows ejecutar nuevamente:
+```ps
+ssh alumno@192.168.128.x
+```
+Resultado esperado:
+
+✔ conexión directa
+✔ no solicita contraseña
+
+
+
 
 
